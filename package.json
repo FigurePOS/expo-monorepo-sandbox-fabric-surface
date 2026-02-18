@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "name": "expo-monorepo-sandbox",
+  "version": "1.0.0",
+  "workspaces": ["apps/*", "packages/*"]
+}
