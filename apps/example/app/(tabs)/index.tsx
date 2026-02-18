@@ -2,18 +2,9 @@ import { Image, StyleSheet, Button } from "react-native";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import TestPackageModule from "test-package";
-import { useEffect } from "react";
+import { router } from "expo-router";
 
 export default function HomeScreen() {
-  useEffect(() => {
-    const sub = TestPackageModule.addListener("onChange", (event) => {
-      console.log("TestPackageModule - onChange", event);
-    });
-    return () => {
-      sub.remove();
-    };
-  }, []);
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -25,23 +16,17 @@ export default function HomeScreen() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Test Package</ThemedText>
+        <ThemedText type="title">Demo</ThemedText>
       </ThemedView>
-      <ThemedView>
-        <Button
-          title="Set Value"
-          onPress={async () => {
-            await TestPackageModule.setValueAsync("test");
-          }}
-        />
-        <Button
-          title="Hello"
-          onPress={() => {
-            const value = TestPackageModule.hello();
-            console.log("TestPackageModule - Hello", value);
-          }}
-        />
-      </ThemedView>
+
+      <ThemedText type="defaultSemiBold">
+        Please navigate to the explore tab to see the demo
+      </ThemedText>
+
+      <Button
+        title="Navigate to Explore"
+        onPress={() => router.push("/(tabs)/explore")}
+      />
     </ParallaxScrollView>
   );
 }
@@ -51,10 +36,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
   },
   reactLogo: {
     height: 178,
