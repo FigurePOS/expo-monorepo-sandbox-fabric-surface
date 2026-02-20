@@ -54,15 +54,10 @@ public class TestPackageModule: Module {
 
     // Enables the module to be used as a native view. Definition components that are accepted as part of the
     // view definition: Prop, Events.
-    View(TestPackageView.self) {
-      // Defines a setter for the `url` prop.
-      Prop("url") { (view: TestPackageView, url: URL) in
-        if view.webView.url != url {
-          view.webView.load(URLRequest(url: url))
-        }
+    View(FigureposExpoKeyboardView.self) {
+      Prop("keyboardType") { (view: FigureposExpoKeyboardView, keyboardType: String?) in
+        view.keyboardType = keyboardType
       }
-
-      Events("onLoad")
     }
   }
 }

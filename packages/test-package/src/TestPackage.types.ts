@@ -1,19 +1,10 @@
+import type { ReactNode } from "react";
 import type { StyleProp, ViewStyle } from "react-native";
 
-export type OnLoadEventPayload = {
-  url: string;
-};
-
-export type TestPackageModuleEvents = {
-  onChange: (params: ChangeEventPayload) => void;
-};
-
-export type ChangeEventPayload = {
-  value: string;
-};
+export type TestPackageModuleEvents = {};
 
 export type TestPackageViewProps = {
-  url: string;
-  onLoad: (event: { nativeEvent: OnLoadEventPayload }) => void;
+  children?: ReactNode;
+  keyboardType?: string;
   style?: StyleProp<ViewStyle>;
 };
